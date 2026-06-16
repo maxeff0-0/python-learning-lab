@@ -1,3 +1,3 @@
 # Python Learning Lab
 
-My progress of learning different python libraries and frameworks
+Learning Python, web scraping, AI, and software development through hands-on projects.
