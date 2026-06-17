@@ -3,10 +3,7 @@ import re
 
 pw = sync_playwright().start()
 
-browser = pw.chromium.launch(
-    headless=False,
-    slow_mo=2000
-)
+browser = pw.chromium.launch()
 
 page = browser.new_page()
 page.goto("https://www.wikipedia.org")
@@ -25,6 +22,10 @@ submit_btn.click()
 
 #page.screenshot(path="screenshots/pic.png")
 
+print("Searching...")
+page.wait_for_load_state("networkidle")
+# waits till network becomes idle .i.e finished searching
+
 paras = page.locator(".mw-heading.mw-heading2 > h2, .mw-heading.mw-heading3 > h3, .mw-content-ltr.mw-parser-output > p")
 
 for para in range(paras.count()):
@@ -34,8 +35,10 @@ for para in range(paras.count()):
     text = re.sub(r"\[\d+\]", "", text)
     if text:
         if tag == "H2":
+            print("\n")
             print(f"===={text}====")
         elif tag == "H3":
+            print("\n")
             print(f"----{text}----")
         else:
             print("\n")
