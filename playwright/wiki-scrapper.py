@@ -22,4 +22,6 @@ submit_btn = page.locator(".pure-button.pure-button-primary-progressive")
 submit_btn.click()
 # clicks the button
 
+page.screenshot(path="screenshots\pic.png")
+
 browser.close()
