@@ -22,6 +22,15 @@ submit_btn = page.locator(".pure-button.pure-button-primary-progressive")
 submit_btn.click()
 # clicks the button
 
-page.screenshot(path="screenshots\pic.png")
+#page.screenshot(path="screenshots/pic.png")
 
+paras = page.locator(".mw-content-ltr.mw-parser-output > p").all()
+
+for para in paras:
+    text = para.text_content().strip()
+    if text:
+        print("\n")
+        print(text)
+        print("-"*50)
+        
 browser.close()
