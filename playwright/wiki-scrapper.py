@@ -26,7 +26,7 @@ print("Searching...")
 page.wait_for_load_state("networkidle")
 # waits till network becomes idle .i.e finished searching
 
-paras = page.locator(".mw-heading.mw-heading2 > h2, .mw-heading.mw-heading3 > h3, .mw-content-ltr.mw-parser-output > p")
+paras = page.locator(".mw-heading.mw-heading2 > h2, .mw-heading.mw-heading3 > h3, .mw-content-ltr.mw-parser-output > p, .mw-content-ltr.mw-parser-output > ul > li")
 
 for para in range(paras.count()):
     text = paras.nth(para)
@@ -40,6 +40,8 @@ for para in range(paras.count()):
         elif tag == "H3":
             print("\n")
             print(f"----{text}----")
+        elif tag == "LI":
+            print("*", text)
         else:
             print("\n")
             print(text)
